@@ -1,82 +1,116 @@
 export default function App() {
   return (
-    <div className="min-h-screen bg-white text-black">
+    <div className="min-h-screen bg-neutral-950 text-white">
 
-      <nav className="flex justify-between items-center p-6 border-b">
+      {/* NAV */}
+      <nav className="flex justify-between items-center px-8 py-6">
         <h1 className="text-2xl font-bold">
           SnapExpress
         </h1>
 
-        <div className="space-x-6 text-sm">
-          Products
-          Design
-          Brands
+        <div className="flex gap-8 text-gray-300">
+          <span>Shop</span>
+          <span>Create</span>
+          <span>Brands</span>
+          <span>Track Order</span>
         </div>
+
+        <button className="bg-white text-black px-5 py-2 rounded-full">
+          Start Designing
+        </button>
       </nav>
 
 
-      <section className="px-8 py-20 grid md:grid-cols-2 gap-10 items-center">
+      {/* HERO */}
+      <section className="px-10 py-20 grid md:grid-cols-2 gap-10 items-center">
 
         <div>
-
           <h2 className="text-6xl font-bold leading-tight">
-            Turn your ideas into real products.
+            Bring Your
+            <br/>
+            Vision To Life
           </h2>
 
-          <p className="mt-6 text-xl text-gray-600">
-            Create custom clothing, upload your designs,
-            and get your products printed and shipped.
+          <p className="mt-6 text-xl text-gray-400">
+            Create custom apparel, upload your designs,
+            and have your products produced and delivered.
           </p>
 
-          <button className="mt-8 bg-black text-white px-8 py-4 rounded-full">
-            Start Creating
-          </button>
 
+          <div className="mt-8 flex gap-4">
+
+            <button className="bg-blue-600 px-8 py-4 rounded-xl">
+              Create Product
+            </button>
+
+            <button className="border border-gray-700 px-8 py-4 rounded-xl">
+              Explore Shop
+            </button>
+
+          </div>
         </div>
 
 
-        <div className="bg-gray-100 rounded-3xl h-96 flex items-center justify-center">
+        <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-3xl p-10 h-96 flex items-center justify-center">
 
-          <div className="bg-white rounded-xl shadow-xl w-56 h-72 flex items-center justify-center text-xl">
-            Hoodie Preview
+          <div className="bg-white text-black rounded-2xl p-10 text-center">
+
+            <div className="text-6xl">
+              👕
+            </div>
+
+            <h3 className="text-2xl font-bold mt-4">
+              Custom Hoodie
+            </h3>
+
+            <p>
+              Your design. Your brand.
+            </p>
+
           </div>
 
         </div>
-
 
       </section>
 
 
 
-      <section className="p-8">
+      {/* PRODUCTS */}
+      <section className="px-10 py-16">
 
-        <h2 className="text-4xl font-bold mb-8">
-          Create anything
+        <h2 className="text-4xl font-bold mb-10">
+          Create Custom Products
         </h2>
 
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-5">
+        <div className="grid md:grid-cols-4 gap-6">
+
 
           {[
             "T-Shirts",
             "Hoodies",
-            "Hats",
-            "Posters",
-            "Stickers"
-          ].map(x=>
+            "Sweatshirts",
+            "Hats"
+          ].map((item)=>(
+            
+            <div className="bg-neutral-900 rounded-2xl p-6 hover:scale-105 transition">
 
-            <div className="rounded-2xl bg-gray-100 p-8 text-center">
-              <div className="h-32 flex items-center justify-center">
-                {x}
+              <div className="h-40 bg-neutral-800 rounded-xl flex items-center justify-center text-6xl">
+                👕
               </div>
 
-              <button className="bg-black text-white px-5 py-2 rounded-full">
+              <h3 className="text-xl font-bold mt-5">
+                {item}
+              </h3>
+
+              <button className="mt-4 bg-white text-black px-5 py-2 rounded-full">
                 Customize
               </button>
 
             </div>
 
-          )}
+          ))}
+
 
         </div>
 
@@ -84,112 +118,107 @@ export default function App() {
 
 
 
-      <section className="p-8">
 
-        <h2 className="text-4xl font-bold mb-8">
-          Design Studio
-        </h2>
+      {/* DESIGN STUDIO */}
+      <section className="px-10 py-20">
+
+        <div className="bg-neutral-900 rounded-3xl p-10">
+
+          <h2 className="text-4xl font-bold">
+            Design Studio
+          </h2>
 
 
-        <div className="grid md:grid-cols-3 gap-6">
+          <p className="text-gray-400 mt-3">
+            Upload artwork and preview your products instantly.
+          </p>
 
 
-          <div className="border rounded-3xl p-6">
 
-            <h3 className="font-bold text-xl">
-              Customize
-            </h3>
+          <div className="mt-10 grid md:grid-cols-2 gap-10">
 
-            <div className="mt-5 space-y-4">
 
-              <div className="border p-3 rounded-xl">
-                Upload Artwork
-              </div>
+            <div className="border border-dashed border-gray-600 rounded-2xl h-72 flex items-center justify-center">
 
-              <div className="border p-3 rounded-xl">
-                Choose Product
-              </div>
+              Upload Your Design
 
-              <div className="border p-3 rounded-xl">
-                Pick Color
-              </div>
+            </div>
 
-              <div className="border p-3 rounded-xl">
-                Add Branding
+
+
+            <div className="bg-neutral-800 rounded-2xl flex items-center justify-center">
+
+              <div className="text-center">
+
+                <div className="text-8xl">
+                  👕
+                </div>
+
+                <h3 className="text-2xl">
+                  Your Brand Here
+                </h3>
+
               </div>
 
             </div>
 
-          </div>
-
-
-
-          <div className="bg-gray-100 rounded-3xl flex items-center justify-center">
-
-            <div className="bg-white shadow-xl rounded-xl w-52 h-64 flex items-center justify-center">
-              Your Design
-            </div>
 
           </div>
-
-
-
-          <div className="border rounded-3xl p-6">
-
-            <h3 className="text-xl font-bold">
-              Order
-            </h3>
-
-            <p className="mt-5">
-              Hoodie
-            </p>
-
-            <p>
-              Quantity: 50
-            </p>
-
-            <p>
-              Delivery Ready
-            </p>
-
-
-            <button className="mt-8 w-full bg-black text-white py-3 rounded-full">
-              Continue
-            </button>
-
-          </div>
-
 
         </div>
+
 
       </section>
 
 
 
-      <section className="p-8 py-20 text-center">
 
-        <h2 className="text-5xl font-bold">
-          From idea to delivery.
+      {/* PROCESS */}
+      <section className="px-10 py-20">
+
+        <h2 className="text-4xl font-bold">
+          From Design To Delivery
         </h2>
 
 
-        <div className="mt-10 flex justify-center gap-6 flex-wrap">
+        <div className="grid md:grid-cols-4 gap-5 mt-10">
 
-          <div className="p-6 rounded-2xl bg-gray-100">
-            Design
-          </div>
 
-          <div className="p-6 rounded-2xl bg-gray-100">
-            Print
-          </div>
+          {[
+            "Upload",
+            "Customize",
+            "Order",
+            "Delivered"
+          ].map((step)=>(
 
-          <div className="p-6 rounded-2xl bg-gray-100">
-            Ship
-          </div>
+            <div className="bg-neutral-900 p-8 rounded-2xl">
+
+              <h3 className="text-xl font-bold">
+                {step}
+              </h3>
+
+              <p className="text-gray-400 mt-2">
+                Simple workflow for creators and brands.
+              </p>
+
+            </div>
+
+          ))}
+
 
         </div>
 
+
       </section>
+
+
+
+      {/* FOOTER */}
+      <footer className="border-t border-neutral-800 p-8 text-center text-gray-500">
+
+        SnapExpress Printing Marketplace
+
+      </footer>
 
 
     </div>
