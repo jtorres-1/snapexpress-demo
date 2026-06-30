@@ -1,68 +1,82 @@
 export default function App() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-white text-black">
 
-      {/* HERO */}
-      <section className="px-8 py-20 text-center">
-
-        <h1 className="text-5xl md:text-6xl font-bold">
-          Bring Your Designs To Life
+      <nav className="flex justify-between items-center p-6 border-b">
+        <h1 className="text-2xl font-bold">
+          SnapExpress
         </h1>
 
-        <p className="mt-6 text-xl text-gray-300 max-w-3xl mx-auto">
-          A custom printing marketplace where brands can upload,
-          customize, order, and receive their products anywhere.
-        </p>
+        <div className="space-x-6 text-sm">
+          Products
+          Design
+          Brands
+        </div>
+      </nav>
 
-        <div className="mt-10 flex justify-center gap-4">
 
-          <button className="bg-white text-black px-8 py-4 rounded-xl">
-            Start Designing
-          </button>
+      <section className="px-8 py-20 grid md:grid-cols-2 gap-10 items-center">
 
-          <button className="border border-white px-8 py-4 rounded-xl">
-            Explore Products
+        <div>
+
+          <h2 className="text-6xl font-bold leading-tight">
+            Turn your ideas into real products.
+          </h2>
+
+          <p className="mt-6 text-xl text-gray-600">
+            Create custom clothing, upload your designs,
+            and get your products printed and shipped.
+          </p>
+
+          <button className="mt-8 bg-black text-white px-8 py-4 rounded-full">
+            Start Creating
           </button>
 
         </div>
 
+
+        <div className="bg-gray-100 rounded-3xl h-96 flex items-center justify-center">
+
+          <div className="bg-white rounded-xl shadow-xl w-56 h-72 flex items-center justify-center text-xl">
+            Hoodie Preview
+          </div>
+
+        </div>
+
+
       </section>
 
 
-      {/* PRODUCTS */}
-      <section className="px-8 py-16">
 
-        <h2 className="text-4xl font-bold mb-10">
-          Create Custom Products
+      <section className="p-8">
+
+        <h2 className="text-4xl font-bold mb-8">
+          Create anything
         </h2>
 
 
-        <div className="grid md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-5">
 
           {[
             "T-Shirts",
             "Hoodies",
-            "Sweatshirts",
-            "Hats"
-          ].map((item) => (
+            "Hats",
+            "Posters",
+            "Stickers"
+          ].map(x=>
 
-            <div
-              key={item}
-              className="bg-zinc-900 rounded-xl p-6"
-            >
-
-              <div className="h-48 bg-zinc-800 rounded-lg flex items-center justify-center">
-                {item}
+            <div className="rounded-2xl bg-gray-100 p-8 text-center">
+              <div className="h-32 flex items-center justify-center">
+                {x}
               </div>
 
-
-              <button className="mt-6 w-full bg-white text-black py-3 rounded-lg">
+              <button className="bg-black text-white px-5 py-2 rounded-full">
                 Customize
               </button>
 
             </div>
 
-          ))}
+          )}
 
         </div>
 
@@ -70,46 +84,38 @@ export default function App() {
 
 
 
-      {/* DESIGN STUDIO */}
-      <section className="px-8 py-20">
+      <section className="p-8">
 
-        <h2 className="text-4xl font-bold text-center">
+        <h2 className="text-4xl font-bold mb-8">
           Design Studio
         </h2>
 
-        <p className="text-center mt-4 text-gray-300">
-          Upload artwork, customize products, and prepare your order.
-        </p>
+
+        <div className="grid md:grid-cols-3 gap-6">
 
 
-        <div className="mt-12 grid md:grid-cols-3 gap-6">
+          <div className="border rounded-3xl p-6">
 
-
-          {/* TOOLS */}
-
-          <div className="bg-zinc-900 rounded-xl p-6">
-
-            <h3 className="text-xl font-bold mb-5">
+            <h3 className="font-bold text-xl">
               Customize
             </h3>
 
+            <div className="mt-5 space-y-4">
 
-            <div className="space-y-4">
-
-              <div className="border border-zinc-700 p-4 rounded-lg">
-                Upload Design
+              <div className="border p-3 rounded-xl">
+                Upload Artwork
               </div>
 
-              <div className="border border-zinc-700 p-4 rounded-lg">
+              <div className="border p-3 rounded-xl">
                 Choose Product
               </div>
 
-              <div className="border border-zinc-700 p-4 rounded-lg">
-                Select Sizes
+              <div className="border p-3 rounded-xl">
+                Pick Color
               </div>
 
-              <div className="border border-zinc-700 p-4 rounded-lg">
-                Pick Colors
+              <div className="border p-3 rounded-xl">
+                Add Branding
               </div>
 
             </div>
@@ -118,134 +124,70 @@ export default function App() {
 
 
 
-          {/* MOCK PRODUCT */}
+          <div className="bg-gray-100 rounded-3xl flex items-center justify-center">
 
-          <div className="bg-zinc-900 rounded-xl p-6 flex items-center justify-center">
-
-            <div className="w-56 h-64 bg-white rounded-xl text-black flex items-center justify-center text-center">
-
-              Custom
-              <br/>
-              Apparel
-              <br/>
-              Preview
-
+            <div className="bg-white shadow-xl rounded-xl w-52 h-64 flex items-center justify-center">
+              Your Design
             </div>
 
           </div>
 
 
 
-          {/* ORDER */}
+          <div className="border rounded-3xl p-6">
 
-          <div className="bg-zinc-900 rounded-xl p-6">
-
-            <h3 className="text-xl font-bold mb-5">
-              Order Summary
+            <h3 className="text-xl font-bold">
+              Order
             </h3>
 
+            <p className="mt-5">
+              Hoodie
+            </p>
 
-            <div className="space-y-3 text-gray-300">
+            <p>
+              Quantity: 50
+            </p>
 
-              <p>
-                Product: Hoodie
-              </p>
-
-              <p>
-                Quantity: 50
-              </p>
-
-              <p>
-                Custom Print: Yes
-              </p>
+            <p>
+              Delivery Ready
+            </p>
 
 
-              <hr />
-
-
-              <p className="text-white text-2xl font-bold">
-                Estimate: $750
-              </p>
-
-
-            </div>
-
-
-            <button className="mt-8 w-full bg-white text-black py-3 rounded-lg">
-
-              Continue Order
-
+            <button className="mt-8 w-full bg-black text-white py-3 rounded-full">
+              Continue
             </button>
 
-
           </div>
 
 
         </div>
 
-
       </section>
 
 
 
+      <section className="p-8 py-20 text-center">
 
-      {/* PROCESS */}
-
-      <section className="px-8 py-20 text-center">
-
-        <h2 className="text-4xl font-bold">
-          From Design To Delivery
+        <h2 className="text-5xl font-bold">
+          From idea to delivery.
         </h2>
 
 
-        <div className="mt-12 grid md:grid-cols-4 gap-5">
+        <div className="mt-10 flex justify-center gap-6 flex-wrap">
 
-
-          <div className="bg-zinc-900 p-8 rounded-xl">
-            Upload Design
+          <div className="p-6 rounded-2xl bg-gray-100">
+            Design
           </div>
 
-
-          <div className="bg-zinc-900 p-8 rounded-xl">
-            Customize
+          <div className="p-6 rounded-2xl bg-gray-100">
+            Print
           </div>
 
-
-          <div className="bg-zinc-900 p-8 rounded-xl">
-            Approve Order
+          <div className="p-6 rounded-2xl bg-gray-100">
+            Ship
           </div>
-
-
-          <div className="bg-zinc-900 p-8 rounded-xl">
-            Print & Ship
-          </div>
-
 
         </div>
-
-
-      </section>
-
-
-
-
-      {/* VALUE */}
-
-      <section className="px-8 py-20 text-center">
-
-        <h2 className="text-4xl font-bold">
-          Built For Growing Brands
-        </h2>
-
-
-        <p className="mt-6 text-gray-300 max-w-2xl mx-auto">
-
-          Give creators and businesses a simple way to
-          turn ideas into finished products without
-          complicated ordering.
-
-        </p>
-
 
       </section>
 
