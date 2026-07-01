@@ -1,122 +1,1108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SnapExpress - Custom Printing Marketplace</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SnapExpress — Custom Printing Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #080808;
+  --surface: #141414;
+  --surface-2: #1C1C1C;
+  --surface-3: #252525;
+  --red: #A51C30;
+  --red-bright: #C41E3A;
+  --red-muted: #7F1520;
+  --white: #FFFFFF;
+  --text: #F0F0F0;
+  --text-muted: #888888;
+  --border: #2A2A2A;
+  --border-strong: #3A3A3A;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  height: 64px;
+  background: rgba(8,8,8,0.94);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  color: var(--text);
+}
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  align-items: center;
+}
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  transition: color 0.15s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  background: var(--red) !important;
+  color: white !important;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-weight: 500 !important;
+  transition: background 0.15s !important;
+}
+.nav-cta:hover { background: var(--red-bright) !important; }
+
+/* BUTTONS */
+.btn-primary {
+  background: var(--red);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: inherit;
+}
+.btn-primary:hover { background: var(--red-bright); }
+.btn-primary:active { transform: scale(0.98); }
+.btn-ghost {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-strong);
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+}
+.btn-ghost:hover { color: var(--text); border-color: #555; }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 7rem 2.5rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 5rem;
+}
+.hero-text { flex: 1.1; }
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red-bright);
+  margin-bottom: 1.5rem;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--red-bright);
+}
+h1 {
+  font-size: clamp(44px, 6vw, 74px);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+  color: var(--white);
+}
+h1 span { color: var(--red-bright); }
+.hero-sub {
+  font-size: 17px;
+  color: var(--text-muted);
+  line-height: 1.75;
+  max-width: 440px;
+  margin-bottom: 2.5rem;
+  font-weight: 400;
+}
+.hero-actions { display: flex; gap: 12px; align-items: center; }
+
+/* HERO VISUAL */
+.hero-visual { flex: 0.9; display: flex; justify-content: center; }
+.product-showcase { position: relative; width: 380px; }
+.showcase-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem 2rem 5rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.showcase-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--red);
+}
+.live-badge {
+  position: absolute;
+  top: 16px; right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #4ade80;
+}
+.live-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+  animation: blink 2s infinite;
+}
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+.order-pill {
+  position: absolute;
+  bottom: 16px; left: 16px; right: 16px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ORDER SECTION */
+.order-section {
+  padding: 6rem 2.5rem;
+  max-width: 880px;
+  margin: 0 auto;
+}
+.section-header { text-align: center; margin-bottom: 3rem; }
+.section-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red-bright);
+  margin-bottom: 0.75rem;
+}
+h2 {
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--white);
+}
+
+/* STEPS */
+.steps-nav {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+}
+.step-tab {
+  flex: 1;
+  padding: 13px 10px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-right: 1px solid var(--border);
+  font-family: inherit;
+}
+.step-tab:last-child { border-right: none; }
+.step-tab.active { background: var(--surface-2); color: var(--white); }
+.step-tab.done { color: var(--red-bright); }
+.step-num {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--surface-3);
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
+.step-tab.active .step-num { background: var(--red); color: white; }
+.step-tab.done .step-num { background: var(--red-muted); color: white; }
+
+.step-panel { display: none; }
+.step-panel.active { display: block; animation: fadeUp 0.25s ease; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* PRODUCT GRID */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 2rem;
+}
+.product-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+.product-card:hover { border-color: #444; background: var(--surface-2); }
+.product-card.selected { border-color: var(--red); background: var(--surface-2); }
+.product-check {
+  display: none;
+  position: absolute;
+  top: 12px; right: 12px;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--red);
+  align-items: center;
+  justify-content: center;
+}
+.product-card.selected .product-check { display: flex; }
+.product-name { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px; text-align: center; }
+.product-price { font-size: 13px; color: var(--text-muted); text-align: center; }
+
+/* COLORS */
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.color-swatches { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 2rem; }
+.swatch {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2.5px solid transparent;
+  transition: all 0.15s;
+  outline: 1px solid #333;
+}
+.swatch:hover { transform: scale(1.1); }
+.swatch.active { border-color: var(--red); }
+
+/* SIZES */
+.size-grid { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 2rem; }
+.size-btn {
+  width: 54px; height: 40px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+.size-btn:hover { border-color: #555; color: var(--text); }
+.size-btn.active { border-color: var(--red); background: rgba(165,28,48,0.15); color: var(--white); }
+
+/* UPLOAD */
+.upload-zone {
+  border: 2px dashed var(--border-strong);
+  border-radius: 12px;
+  padding: 4rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 1.5rem;
+  background: var(--surface);
+}
+.upload-zone:hover, .upload-zone.drag-over {
+  border-color: var(--red);
+  background: rgba(165,28,48,0.04);
+}
+.upload-zone.has-file {
+  border-style: solid;
+  border-color: #4ade80;
+  background: rgba(74,222,128,0.04);
+}
+.upload-icon { font-size: 44px; margin-bottom: 1rem; display: block; }
+.upload-title { font-size: 16px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+.upload-sub { font-size: 13px; color: var(--text-muted); }
+.upload-tips {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 1.5rem;
+}
+.tip-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.5;
+}
+.tip-icon { font-size: 22px; margin-bottom: 6px; display: block; }
+
+/* REVIEW */
+.review-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+.mockup-container {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.order-summary {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+.summary-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 14px;
+}
+.summary-label { color: var(--text-muted); }
+.summary-value { color: var(--text); font-weight: 500; }
+.summary-total {
+  border-top: 1px solid var(--border);
+  margin-top: 8px;
+  padding-top: 14px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--white);
+}
+.qty-control { display: flex; align-items: center; gap: 14px; }
+.qty-btn {
+  width: 32px; height: 32px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.1s;
+  font-family: inherit;
+}
+.qty-btn:hover { border-color: #555; }
+.qty-display { font-size: 16px; font-weight: 600; min-width: 24px; text-align: center; color: var(--white); }
+
+/* NAV BTNS */
+.step-nav-btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+/* DASHBOARD */
+.dash-section {
+  padding: 6rem 2.5rem;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.dash-inner { max-width: 1000px; margin: 0 auto; }
+.db-bar { display: flex; gap: 4px; margin-bottom: 2rem; }
+.db-tab {
+  padding: 7px 16px;
+  font-size: 13px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+.db-tab.active { background: var(--surface-2); color: var(--white); }
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+.stat-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+.stat-label { font-size: 11px; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.07em; }
+.stat-value { font-size: 26px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+.stat-delta { font-size: 12px; color: #4ade80; }
+.orders-table {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.t-head {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr 0.6fr 0.8fr 1.2fr;
+  padding: 12px 16px;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  border-bottom: 1px solid var(--border);
+}
+.t-row {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr 0.6fr 0.8fr 1.2fr;
+  padding: 14px 16px;
+  font-size: 13px;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.1s;
+}
+.t-row:last-child { border-bottom: none; }
+.t-row:hover { background: var(--surface-2); }
+.brand-name { font-weight: 500; color: var(--white); }
+.brand-meta { color: var(--text-muted); font-size: 12px; margin-top: 2px; }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+}
+.badge-prod { background: rgba(234,179,8,0.12); color: #fbbf24; }
+.badge-ship { background: rgba(74,222,128,0.12); color: #4ade80; }
+.badge-pend { background: rgba(156,163,175,0.1); color: #9ca3af; }
+
+/* HOW */
+.how-section {
+  padding: 6rem 2.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+.how-card {
+  padding: 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.how-num { font-size: 52px; font-weight: 800; color: var(--red); opacity: 0.35; line-height: 1; margin-bottom: 1rem; }
+.how-title { font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+.how-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+/* FOOTER */
+footer {
+  padding: 3rem 2rem;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+@media (max-width: 768px) {
+  .hero { flex-direction: column; padding-top: 5rem; gap: 2rem; }
+  .hero-visual { width: 100%; }
+  .product-showcase { width: 100%; }
+  .product-grid { grid-template-columns: 1fr; }
+  .review-grid { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .how-grid { grid-template-columns: 1fr; }
+  .nav-links li:not(:last-child) { display: none; }
+  .upload-tips { grid-template-columns: 1fr; }
+}
+</style>
 </head>
-<body class="bg-zinc-50 text-zinc-900">
+<body>
 
-  <nav class="fixed top-0 w-full bg-white border-b z-50">
-    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-      <h1 class="text-3xl font-bold tracking-tighter text-black">snapexpress</h1>
-      <button class="bg-black text-white px-6 py-3 rounded-2xl font-medium text-sm">Get Started</button>
+<nav>
+  <a href="#" class="logo">
+    <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+      <circle cx="16" cy="16" r="15" stroke="#A51C30" stroke-width="1.5"/>
+      <polygon points="16,8 24,22 8,22" fill="none" stroke="#A51C30" stroke-width="1.5" stroke-linejoin="round"/>
+      <polygon points="16,13 20,20 12,20" fill="#A51C30"/>
+    </svg>
+    SnapExpress
+  </a>
+  <ul class="nav-links">
+    <li><a href="#order">Order</a></li>
+    <li><a href="#dashboard">Print shops</a></li>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#order" class="nav-cta" onclick="smoothTo('order')">Start order</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Custom Printing Platform</div>
+    <h1>Your designs.<br><span>Printed.</span><br>Nationwide.</h1>
+    <p class="hero-sub">Order premium custom apparel directly from the shop. Pick your blank, upload your artwork, and ship to your customers — all in one place.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="smoothTo('order')">
+        Start your order
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+      <button class="btn-ghost" onclick="smoothTo('dashboard')">
+        For print shops
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="#888" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
     </div>
-  </nav>
+  </div>
 
-  <!-- HERO -->
-  <section class="pt-28 pb-20 text-center px-6 bg-white">
-    <h1 class="text-5xl md:text-7xl font-bold tracking-tighter">Your Designs.<br>Printed on Demand.</h1>
-    <p class="mt-6 text-2xl md:text-3xl text-zinc-600">The easiest way for brands to order custom apparel.</p>
-    <p class="mt-8 max-w-xl mx-auto text-lg text-zinc-600">Upload your design → Choose blanks → Get printed & shipped.</p>
-  </section>
-
-  <!-- PRODUCTS -->
-  <section class="max-w-7xl mx-auto px-6 py-16">
-    <h2 class="text-4xl md:text-5xl font-bold text-center mb-12">Available Blanks</h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-      <div class="text-center">
-        <img src="http://www.houseofblanks.com/cdn/shop/files/1016OversizedBoxyT-Shirt_White_01.jpg?v=1749667530" class="rounded-3xl w-full shadow" alt="Oversized Tee">
-        <p class="mt-4 font-medium">Oversized Tees</p>
-      </div>
-      <div class="text-center">
-        <img src="https://createfashionbrand.com/wp-content/uploads/2024/02/grey-corretc-size--1000x1250.webp" class="rounded-3xl w-full shadow" alt="Heavy Hoodie">
-        <p class="mt-4 font-medium">Heavy Hoodies</p>
-      </div>
-      <div class="text-center">
-        <img src="http://taelor.style/cdn/shop/products/71b108c0e33f47dfb16424252ee95f8a_0925c4be-f6d5-44f6-ac01-5a8c6e68dfb3.jpg?v=1698671425" class="rounded-3xl w-full shadow" alt="Crewneck">
-        <p class="mt-4 font-medium">Crewnecks</p>
-      </div>
-      <div class="text-center">
-        <img src="https://images.imprint.com/image/upload/f_auto,q_100/shop_images/product/Blank_Structured_Baseball_Hats_6642658486ae3.jpg" class="rounded-3xl w-full shadow" alt="Hat">
-        <p class="mt-4 font-medium">Hats & Accessories</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section class="bg-white py-20">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl md:text-5xl font-bold text-center mb-12">How It Works for Brands</h2>
-      <div class="grid md:grid-cols-4 gap-8 text-center">
-        <div>
-          <div class="text-6xl mb-4">1</div>
-          <p class="font-medium">Upload Your Design</p>
-          <p class="text-sm text-zinc-600 mt-2">PNG, SVG or PSD files accepted</p>
+  <div class="hero-visual">
+    <div class="product-showcase">
+      <div class="showcase-card">
+        <div class="live-badge">
+          <div class="live-dot"></div>
+          Live orders
         </div>
-        <div>
-          <div class="text-6xl mb-4">2</div>
-          <p class="font-medium">Choose Blanks & Colors</p>
-          <p class="text-sm text-zinc-600 mt-2">Premium tees, hoodies, hats and more</p>
-        </div>
-        <div>
-          <div class="text-6xl mb-4">3</div>
-          <p class="font-medium">Review Mockup & Price</p>
-          <p class="text-sm text-zinc-600 mt-2">Instant preview before ordering</p>
-        </div>
-        <div>
-          <div class="text-6xl mb-4">4</div>
-          <p class="font-medium">Approve & Order</p>
-          <p class="text-sm text-zinc-600 mt-2">Real-time order tracking included</p>
+        <svg width="220" height="240" viewBox="0 0 220 240" fill="none">
+          <path d="M75 65 L45 115 L65 120 L74 96 L74 215 L146 215 L146 96 L155 120 L175 115 L145 65 Q128 34 110 38 Q92 34 75 65Z" fill="#1C1C1C" stroke="#333" stroke-width="1.5"/>
+          <path d="M75 65 Q110 52 145 65" fill="#222" stroke="#A51C30" stroke-width="1.5"/>
+          <rect x="80" y="148" width="60" height="40" rx="4" fill="#222" stroke="#333" stroke-width="1"/>
+          <rect x="86" y="102" width="48" height="36" rx="4" fill="#A51C30" opacity="0.75"/>
+          <text x="110" y="124" text-anchor="middle" font-size="11" fill="white" font-family="Inter,sans-serif" font-weight="700">BRAND</text>
+        </svg>
+        <div class="order-pill">
+          <div style="width:8px;height:8px;border-radius:50%;background:#4ade80;flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:12px;font-weight:500;color:#F0F0F0;">Gio's Brand — 80 hoodies</div>
+            <div style="font-size:11px;color:#666;">In production · Est. 2 days</div>
+          </div>
+          <div style="margin-left:auto;font-size:13px;font-weight:700;color:#A51C30;">$2,560</div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- DASHBOARD -->
-  <section class="bg-zinc-100 py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl md:text-5xl font-bold text-center mb-4">Print Shop Owner Dashboard</h2>
-      <p class="text-center text-zinc-600 mb-12">Real-time order management</p>
-      <div class="bg-white rounded-3xl p-10 md:p-16 shadow-xl max-w-5xl mx-auto">
-        <div class="flex justify-between mb-12 text-lg">
-          <div>SnapExpress • Live</div>
-          <div class="text-emerald-600">● Online</div>
-        </div>
-        <div class="text-6xl md:text-7xl font-bold mb-12">$4,872 Revenue Today</div>
-        <div class="grid md:grid-cols-2 gap-6">
-          <div class="bg-zinc-100 p-6 md:p-8 rounded-2xl">Gio's Brand • 80 Hoodies <span class="float-right text-orange-600">In Production</span></div>
-          <div class="bg-zinc-100 p-6 md:p-8 rounded-2xl">Streetwear Co • 120 Tees <span class="float-right text-emerald-600">Shipped</span></div>
-        </div>
+<!-- ORDER FLOW -->
+<section class="order-section" id="order">
+  <div class="section-header">
+    <div class="section-eyebrow">Place an order</div>
+    <h2>Start your custom order</h2>
+  </div>
+
+  <div class="steps-nav">
+    <button class="step-tab active" id="tab-1" onclick="jumpTo(1)">
+      <span class="step-num">1</span> Choose blank
+    </button>
+    <button class="step-tab" id="tab-2" onclick="jumpTo(2)">
+      <span class="step-num">2</span> Color & size
+    </button>
+    <button class="step-tab" id="tab-3" onclick="jumpTo(3)">
+      <span class="step-num">3</span> Upload design
+    </button>
+    <button class="step-tab" id="tab-4" onclick="jumpTo(4)">
+      <span class="step-num">4</span> Review & order
+    </button>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="step-panel active" id="panel-1">
+    <div class="product-grid">
+      <div class="product-card" onclick="pickProduct('tee','Heavyweight Tee',18,this)">
+        <div class="product-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <svg width="120" height="128" viewBox="0 0 120 128" fill="none">
+          <path d="M35 28 L18 55 L34 59 L39 42 L39 118 L81 118 L81 42 L86 59 L102 55 L85 28 Q76 18 60 20 Q44 18 35 28Z" fill="#1C1C1C" stroke="#333" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M44 28 Q60 36 76 28" fill="none" stroke="#444" stroke-width="1"/>
+          <rect x="49" y="54" width="22" height="16" rx="2" fill="#A51C30" opacity="0.6"/>
+        </svg>
+        <div><div class="product-name">Heavyweight Tee</div><div class="product-price">From $18 per unit</div></div>
+      </div>
+
+      <div class="product-card" onclick="pickProduct('hoodie','Premium Hoodie',32,this)">
+        <div class="product-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <svg width="120" height="128" viewBox="0 0 120 128" fill="none">
+          <path d="M36 38 L14 76 L30 80 L38 58 L38 118 L82 118 L82 58 L90 80 L106 76 L84 38 Q74 16 60 20 Q46 16 36 38Z" fill="#1C1C1C" stroke="#333" stroke-width="1.5"/>
+          <path d="M36 38 Q60 28 84 38" fill="#222" stroke="#A51C30" stroke-width="1.5"/>
+          <rect x="44" y="86" width="32" height="20" rx="2" fill="#222" stroke="#333" stroke-width="1"/>
+          <rect x="48" y="58" width="24" height="18" rx="2" fill="#A51C30" opacity="0.6"/>
+        </svg>
+        <div><div class="product-name">Premium Hoodie</div><div class="product-price">From $32 per unit</div></div>
+      </div>
+
+      <div class="product-card" onclick="pickProduct('hat','Structured Hat',22,this)">
+        <div class="product-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <svg width="120" height="128" viewBox="0 0 120 128" fill="none">
+          <ellipse cx="60" cy="94" rx="44" ry="8" fill="#1C1C1C" stroke="#333" stroke-width="1.5"/>
+          <path d="M16 92 Q16 52 60 46 Q104 52 104 92" fill="#1C1C1C" stroke="#333" stroke-width="1.5"/>
+          <line x1="16" y1="82" x2="104" y2="82" stroke="#333" stroke-width="1"/>
+          <rect x="44" y="56" width="32" height="22" rx="3" fill="#A51C30" opacity="0.6"/>
+          <text x="60" y="71" text-anchor="middle" font-size="8" fill="white" font-family="Inter,sans-serif" font-weight="700">SE</text>
+        </svg>
+        <div><div class="product-name">Structured Hat</div><div class="product-price">From $22 per unit</div></div>
+      </div>
+
+      <div class="product-card" onclick="pickProduct('longsleeve','Long Sleeve',22,this)">
+        <div class="product-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <svg width="120" height="128" viewBox="0 0 120 128" fill="none">
+          <path d="M36 28 L6 90 L22 96 L38 54 L38 118 L82 118 L82 54 L98 96 L114 90 L84 28 Q74 18 60 20 Q46 18 36 28Z" fill="#1C1C1C" stroke="#333" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M44 28 Q60 36 76 28" fill="none" stroke="#444" stroke-width="1"/>
+          <rect x="49" y="54" width="22" height="16" rx="2" fill="#A51C30" opacity="0.6"/>
+        </svg>
+        <div><div class="product-name">Long Sleeve</div><div class="product-price">From $22 per unit</div></div>
       </div>
     </div>
-  </section>
 
-  <!-- VALUE -->
-  <section class="max-w-6xl mx-auto px-6 py-24">
-    <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">Why Print Shop Owners Choose SnapExpress</h2>
-    <div class="grid md:grid-cols-3 gap-12 text-center">
+    <div class="step-nav-btns">
+      <div></div>
+      <button class="btn-primary" onclick="goNext(2)" id="btn-next-1" style="opacity:0.35;cursor:not-allowed;" disabled>
+        Continue
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step-panel" id="panel-2">
+    <div style="margin-bottom:2rem;">
+      <div class="section-label">Select color</div>
+      <div class="color-swatches">
+        <div class="swatch active" style="background:#FFFFFF;" onclick="pickColor(this,'White')" title="White"></div>
+        <div class="swatch" style="background:#111111;" onclick="pickColor(this,'Black')" title="Black"></div>
+        <div class="swatch" style="background:#6B7280;" onclick="pickColor(this,'Grey')" title="Grey"></div>
+        <div class="swatch" style="background:#7C2D12;" onclick="pickColor(this,'Maroon')" title="Maroon"></div>
+        <div class="swatch" style="background:#1D4ED8;" onclick="pickColor(this,'Navy')" title="Navy"></div>
+        <div class="swatch" style="background:#064E3B;" onclick="pickColor(this,'Forest')" title="Forest Green"></div>
+        <div class="swatch" style="background:#F5F0E8;" onclick="pickColor(this,'Cream')" title="Cream"></div>
+        <div class="swatch" style="background:#B91C1C;" onclick="pickColor(this,'Red')" title="Red"></div>
+      </div>
+    </div>
+    <div>
+      <div class="section-label">Select size</div>
+      <div class="size-grid">
+        <button class="size-btn" onclick="pickSize(this)">XS</button>
+        <button class="size-btn" onclick="pickSize(this)">S</button>
+        <button class="size-btn active" onclick="pickSize(this)">M</button>
+        <button class="size-btn" onclick="pickSize(this)">L</button>
+        <button class="size-btn" onclick="pickSize(this)">XL</button>
+        <button class="size-btn" onclick="pickSize(this)">2XL</button>
+        <button class="size-btn" onclick="pickSize(this)">3XL</button>
+      </div>
+    </div>
+    <div class="step-nav-btns">
+      <button class="btn-ghost" onclick="goPrev(1)">← Back</button>
+      <button class="btn-primary" onclick="goNext(3)">
+        Continue
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step-panel" id="panel-3">
+    <div class="upload-zone" id="uZone" onclick="fakeUpload()" ondragover="onDragOver(event)" ondragleave="onDragLeave(event)" ondrop="onDrop(event)">
+      <div id="u-idle">
+        <span class="upload-icon">⬆</span>
+        <div class="upload-title">Drop your design here or click to upload</div>
+        <div class="upload-sub">PNG, SVG, or PSD · 300 DPI recommended · Transparent background preferred</div>
+      </div>
+      <div id="u-done" style="display:none;">
+        <span class="upload-icon" style="color:#4ade80;">✓</span>
+        <div class="upload-title" style="color:#4ade80;">brand_logo_v3.png uploaded</div>
+        <div class="upload-sub">4200 × 4200 px · 300 DPI · Transparent background detected</div>
+      </div>
+    </div>
+    <div class="upload-tips">
+      <div class="tip-card"><span class="tip-icon">🖼</span>PNG with transparent background for cleanest results</div>
+      <div class="tip-card"><span class="tip-icon">📐</span>Minimum 300 DPI for sharp print quality</div>
+      <div class="tip-card"><span class="tip-icon">🎨</span>RGB color mode, sRGB color profile</div>
+    </div>
+    <div class="step-nav-btns">
+      <button class="btn-ghost" onclick="goPrev(2)">← Back</button>
+      <button class="btn-primary" onclick="goNext(4)">
+        Review order
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="step-panel" id="panel-4">
+    <div class="review-grid">
       <div>
-        <p class="text-6xl font-bold text-emerald-600">24/7</p>
-        <p class="mt-6 font-medium">Online Ordering</p>
-        <p class="text-zinc-600">Accept orders from brands anytime</p>
+        <div class="mockup-container">
+          <svg id="review-svg" width="200" height="220" viewBox="0 0 200 220" fill="none">
+            <path d="M65 58 L38 108 L58 114 L66 90 L66 208 L134 208 L134 90 L142 114 L162 108 L135 58 Q118 28 100 32 Q82 28 65 58Z" fill="#1C1C1C" stroke="#333" stroke-width="1.5"/>
+            <path d="M65 58 Q100 46 135 58" fill="#222" stroke="#A51C30" stroke-width="1.5"/>
+            <rect x="72" y="138" width="56" height="38" rx="4" fill="#222" stroke="#333" stroke-width="1"/>
+            <rect x="77" y="92" width="46" height="34" rx="4" fill="#A51C30" opacity="0.75"/>
+            <text x="100" y="113" text-anchor="middle" font-size="10" fill="white" font-family="Inter,sans-serif" font-weight="700">YOUR DESIGN</text>
+          </svg>
+          <div style="font-size:12px;color:#555;text-align:center;">Placement preview — not to scale</div>
+        </div>
       </div>
+
       <div>
-        <p class="text-6xl font-bold text-emerald-600">80%</p>
-        <p class="mt-6 font-medium">Less Admin Time</p>
-        <p class="text-zinc-600">Automated quoting & tracking</p>
-      </div>
-      <div>
-        <p class="text-6xl font-bold text-emerald-600">Scale</p>
-        <p class="mt-6 font-medium">Nationwide Reach</p>
-        <p class="text-zinc-600">Grow beyond local customers</p>
+        <div class="order-summary">
+          <div class="summary-title">Order summary</div>
+          <div class="summary-row">
+            <span class="summary-label">Product</span>
+            <span class="summary-value" id="r-product">Premium Hoodie</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Color</span>
+            <span class="summary-value" id="r-color">White</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Size</span>
+            <span class="summary-value" id="r-size">M</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Design file</span>
+            <span class="summary-value" id="r-file" style="color:#4ade80;">brand_logo_v3.png</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Quantity</span>
+            <div class="qty-control">
+              <button class="qty-btn" onclick="changeQty(-1)">−</button>
+              <span class="qty-display" id="r-qty">12</span>
+              <button class="qty-btn" onclick="changeQty(1)">+</button>
+            </div>
+          </div>
+          <div class="summary-row summary-total">
+            <span>Total</span>
+            <span id="r-total">$384</span>
+          </div>
+        </div>
+        <button class="btn-primary" id="place-btn" style="width:100%;margin-top:14px;justify-content:center;padding:16px 28px;" onclick="placeOrder()">
+          Place order
+        </button>
+        <p style="font-size:12px;color:#555;text-align:center;margin-top:10px;">Production starts within 24 hours · Tracking included</p>
       </div>
     </div>
-  </section>
 
-  <footer class="bg-zinc-900 text-white py-16 text-center">
-    SnapExpress • Premium Custom Printing Marketplace • Preview for Matthew's Client
-  </footer>
+    <div class="step-nav-btns">
+      <button class="btn-ghost" onclick="goPrev(3)">← Back</button>
+      <div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section class="dash-section" id="dashboard">
+  <div class="dash-inner">
+    <div style="margin-bottom:2.5rem;">
+      <div class="section-eyebrow">Print shop dashboard</div>
+      <h2 style="margin-top:8px;">Your shop. Fully automated.</h2>
+    </div>
+
+    <div class="db-bar">
+      <button class="db-tab active">Overview</button>
+      <button class="db-tab">Orders</button>
+      <button class="db-tab">Brands</button>
+      <button class="db-tab">Production</button>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-label">Revenue today</div>
+        <div class="stat-value">$4,872</div>
+        <div class="stat-delta">↑ 23% vs yesterday</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Active orders</div>
+        <div class="stat-value">34</div>
+        <div class="stat-delta">↑ 8 new today</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">In production</div>
+        <div class="stat-value">847</div>
+        <div class="stat-delta">units across 12 orders</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Brand clients</div>
+        <div class="stat-value">28</div>
+        <div class="stat-delta">↑ 3 this week</div>
+      </div>
+    </div>
+
+    <div class="orders-table">
+      <div class="t-head">
+        <div>Brand / Order</div>
+        <div>Product</div>
+        <div>Qty</div>
+        <div>Total</div>
+        <div>Status</div>
+      </div>
+      <div class="t-row">
+        <div><div class="brand-name">Gio's Brand</div><div class="brand-meta">Order #1042 · 2 hours ago</div></div>
+        <div style="color:#888;font-size:13px;">Premium Hoodies</div>
+        <div style="color:#888;font-size:13px;">80</div>
+        <div style="font-weight:600;color:#F0F0F0;">$2,560</div>
+        <div><span class="badge badge-prod">● In production</span></div>
+      </div>
+      <div class="t-row">
+        <div><div class="brand-name">Streetwear Co</div><div class="brand-meta">Order #1041 · 5 hours ago</div></div>
+        <div style="color:#888;font-size:13px;">Heavyweight Tees</div>
+        <div style="color:#888;font-size:13px;">120</div>
+        <div style="font-weight:600;color:#F0F0F0;">$2,160</div>
+        <div><span class="badge badge-ship">● Shipped</span></div>
+      </div>
+      <div class="t-row">
+        <div><div class="brand-name">La Familia Apparel</div><div class="brand-meta">Order #1040 · Yesterday</div></div>
+        <div style="color:#888;font-size:13px;">Structured Hats</div>
+        <div style="color:#888;font-size:13px;">50</div>
+        <div style="font-weight:600;color:#F0F0F0;">$1,100</div>
+        <div><span class="badge badge-ship">● Shipped</span></div>
+      </div>
+      <div class="t-row">
+        <div><div class="brand-name">Eastside Collective</div><div class="brand-meta">Order #1039 · Yesterday</div></div>
+        <div style="color:#888;font-size:13px;">Long Sleeves</div>
+        <div style="color:#888;font-size:13px;">60</div>
+        <div style="font-weight:600;color:#F0F0F0;">$1,320</div>
+        <div><span class="badge badge-pend">● Pending</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="how-section" id="how">
+  <div class="section-header">
+    <div class="section-eyebrow">How it works</div>
+    <h2>From artwork to doorstep</h2>
+  </div>
+  <div class="how-grid">
+    <div class="how-card">
+      <div class="how-num">01</div>
+      <div class="how-title">Choose your blank</div>
+      <div class="how-desc">Pick from premium tees, hoodies, hats, and long sleeves. DTG and DTF printing available on all blanks.</div>
+    </div>
+    <div class="how-card">
+      <div class="how-num">02</div>
+      <div class="how-title">Upload your design</div>
+      <div class="how-desc">Drop your PNG, SVG, or PSD. Every file is reviewed for print quality before it enters production.</div>
+    </div>
+    <div class="how-card">
+      <div class="how-num">03</div>
+      <div class="how-title">Printed and shipped</div>
+      <div class="how-desc">Same-day samples available. Rush production for tight deadlines. Track every unit in real time.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px;">
+    <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
+      <circle cx="16" cy="16" r="15" stroke="#A51C30" stroke-width="1.5"/>
+      <polygon points="16,8 24,22 8,22" fill="none" stroke="#A51C30" stroke-width="1.5" stroke-linejoin="round"/>
+      <polygon points="16,13 20,20 12,20" fill="#A51C30"/>
+    </svg>
+    <span style="font-weight:600;font-size:15px;color:#F0F0F0;">SnapExpress</span>
+  </div>
+  <div>Custom Printing Platform · Nationwide Shipping · DTG & DTF Printing</div>
+  <div style="margin-top:6px;color:#444;font-size:12px;">Platform preview — powered by SnapExpress</div>
+</footer>
+
+<script>
+let state = {
+  step: 1,
+  product: null,
+  productName: 'Premium Hoodie',
+  price: 32,
+  color: 'White',
+  size: 'M',
+  qty: 12,
+  uploaded: false
+};
+
+function smoothTo(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+}
+
+function setStep(n) {
+  document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.step-tab').forEach(t => { t.classList.remove('active','done'); });
+  document.getElementById('panel-' + n).classList.add('active');
+  document.getElementById('tab-' + n).classList.add('active');
+  for (let i = 1; i < n; i++) {
+    document.getElementById('tab-' + i).classList.add('done');
+    var el = document.getElementById('tab-' + i);
+    var num = el.querySelector('.step-num');
+    if (num) num.textContent = '✓';
+  }
+  state.step = n;
+  if (n === 4) refreshReview();
+}
+
+function jumpTo(n) {
+  if (n <= state.step) setStep(n);
+}
+
+function goNext(n) {
+  setStep(n);
+  document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
+}
+
+function goPrev(n) {
+  setStep(n);
+  document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
+}
+
+function pickProduct(type, name, price, el) {
+  document.querySelectorAll('.product-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  state.product = type;
+  state.productName = name;
+  state.price = price;
+  var btn = document.getElementById('btn-next-1');
+  btn.disabled = false;
+  btn.style.opacity = '1';
+  btn.style.cursor = 'pointer';
+}
+
+function pickColor(el, name) {
+  document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+  el.classList.add('active');
+  state.color = name;
+}
+
+function pickSize(el) {
+  document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  state.size = el.textContent;
+}
+
+function fakeUpload() {
+  var zone = document.getElementById('uZone');
+  zone.classList.add('has-file');
+  document.getElementById('u-idle').style.display = 'none';
+  document.getElementById('u-done').style.display = 'block';
+  state.uploaded = true;
+}
+
+function onDragOver(e) {
+  e.preventDefault();
+  document.getElementById('uZone').classList.add('drag-over');
+}
+function onDragLeave() {
+  document.getElementById('uZone').classList.remove('drag-over');
+}
+function onDrop(e) {
+  e.preventDefault();
+  fakeUpload();
+}
+
+function refreshReview() {
+  document.getElementById('r-product').textContent = state.productName;
+  document.getElementById('r-color').textContent = state.color;
+  document.getElementById('r-size').textContent = state.size;
+  document.getElementById('r-file').textContent = state.uploaded ? 'brand_logo_v3.png' : 'No file selected';
+  document.getElementById('r-file').style.color = state.uploaded ? '#4ade80' : '#888';
+  calcTotal();
+}
+
+function changeQty(d) {
+  state.qty = Math.max(1, state.qty + d);
+  document.getElementById('r-qty').textContent = state.qty;
+  calcTotal();
+}
+
+function calcTotal() {
+  document.getElementById('r-total').textContent = '$' + (state.price * state.qty).toLocaleString();
+}
+
+function placeOrder() {
+  var btn = document.getElementById('place-btn');
+  btn.innerHTML = '✓ Order placed — check your email';
+  btn.style.background = '#064e3b';
+  btn.style.cursor = 'default';
+  btn.onclick = null;
+}
+
+document.querySelectorAll('.db-tab').forEach(function(t) {
+  t.addEventListener('click', function() {
+    document.querySelectorAll('.db-tab').forEach(function(x){ x.classList.remove('active'); });
+    t.classList.add('active');
+  });
+});
+</script>
 </body>
 </html>
