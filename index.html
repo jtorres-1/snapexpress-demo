@@ -8,18 +8,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #080808;
-  --surface: #141414;
-  --surface-2: #1C1C1C;
-  --surface-3: #252525;
+  --bg: #FFFFFF;
+  --surface: #F7F7F7;
+  --surface-2: #F0F0F0;
+  --surface-3: #E8E8E8;
   --red: #A51C30;
   --red-bright: #C41E3A;
-  --red-muted: #7F1520;
+  --red-light: #FDF0F2;
+  --black: #111111;
+  --text: #111111;
+  --text-muted: #666666;
+  --border: #E5E5E5;
+  --border-strong: #CCCCCC;
   --white: #FFFFFF;
-  --text: #F0F0F0;
-  --text-muted: #888888;
-  --border: #2A2A2A;
-  --border-strong: #3A3A3A;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -41,7 +42,7 @@ nav {
   justify-content: space-between;
   padding: 0 2.5rem;
   height: 64px;
-  background: rgba(8,8,8,0.94);
+  background: rgba(255,255,255,0.96);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
 }
@@ -49,11 +50,11 @@ nav {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 17px;
   letter-spacing: -0.02em;
   text-decoration: none;
-  color: var(--text);
+  color: var(--black);
 }
 .nav-links {
   display: flex;
@@ -101,7 +102,7 @@ nav {
 .btn-ghost {
   background: transparent;
   color: var(--text-muted);
-  border: 1px solid var(--border-strong);
+  border: 1.5px solid var(--border-strong);
   padding: 14px 24px;
   border-radius: 8px;
   font-size: 15px;
@@ -114,7 +115,7 @@ nav {
   gap: 6px;
   font-family: inherit;
 }
-.btn-ghost:hover { color: var(--text); border-color: #555; }
+.btn-ghost:hover { color: var(--text); border-color: #999; }
 
 /* HERO */
 .hero {
@@ -135,32 +136,31 @@ nav {
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--red-bright);
+  color: var(--red);
   margin-bottom: 1.5rem;
 }
 .hero-eyebrow::before {
   content: '';
   display: block;
   width: 24px;
-  height: 1px;
-  background: var(--red-bright);
+  height: 1.5px;
+  background: var(--red);
 }
 h1 {
-  font-size: clamp(44px, 6vw, 74px);
+  font-size: clamp(40px, 5.5vw, 68px);
   font-weight: 700;
-  line-height: 1.04;
+  line-height: 1.05;
   letter-spacing: -0.03em;
-  margin-bottom: 1.5rem;
-  color: var(--white);
+  margin-bottom: 1.25rem;
+  color: var(--black);
 }
-h1 span { color: var(--red-bright); }
+h1 span { color: var(--red); }
 .hero-sub {
   font-size: 17px;
   color: var(--text-muted);
   line-height: 1.75;
   max-width: 440px;
   margin-bottom: 2.5rem;
-  font-weight: 400;
 }
 .hero-actions { display: flex; gap: 12px; align-items: center; }
 
@@ -169,8 +169,8 @@ h1 span { color: var(--red-bright); }
 .product-showcase { position: relative; width: 380px; }
 .showcase-card {
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
   padding: 2rem 2rem 5rem;
   position: relative;
   overflow: hidden;
@@ -182,7 +182,7 @@ h1 span { color: var(--red-bright); }
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 2px;
+  height: 3px;
   background: var(--red);
 }
 .live-badge {
@@ -192,13 +192,17 @@ h1 span { color: var(--red-bright); }
   align-items: center;
   gap: 6px;
   font-size: 11px;
-  font-weight: 500;
-  color: #4ade80;
+  font-weight: 600;
+  color: #16a34a;
+  background: #f0fdf4;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid #bbf7d0;
 }
 .live-dot {
   width: 6px; height: 6px;
   border-radius: 50%;
-  background: #4ade80;
+  background: #16a34a;
   animation: blink 2s infinite;
 }
 @keyframes blink {
@@ -208,19 +212,41 @@ h1 span { color: var(--red-bright); }
 .order-pill {
   position: absolute;
   bottom: 16px; left: 16px; right: 16px;
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  border-radius: 8px;
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
   padding: 10px 14px;
   display: flex;
   align-items: center;
   gap: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
 }
+
+/* TRUST BAR */
+.trust-bar {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  background: var(--surface);
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+.trust-icon { font-size: 16px; }
 
 /* ORDER SECTION */
 .order-section {
   padding: 6rem 2.5rem;
-  max-width: 880px;
+  max-width: 920px;
   margin: 0 auto;
 }
 .section-header { text-align: center; margin-bottom: 3rem; }
@@ -229,27 +255,33 @@ h1 span { color: var(--red-bright); }
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--red-bright);
+  color: var(--red);
   margin-bottom: 0.75rem;
 }
 h2 {
-  font-size: 38px;
+  font-size: 36px;
   font-weight: 700;
   letter-spacing: -0.025em;
-  color: var(--white);
+  color: var(--black);
+}
+.section-sub {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
 }
 
 /* STEPS */
 .steps-nav {
   display: flex;
-  border: 1px solid var(--border);
-  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
   overflow: hidden;
   margin-bottom: 2.5rem;
+  background: var(--surface);
 }
 .step-tab {
   flex: 1;
-  padding: 13px 10px;
+  padding: 14px 10px;
   text-align: center;
   font-size: 13px;
   font-weight: 500;
@@ -266,55 +298,56 @@ h2 {
   font-family: inherit;
 }
 .step-tab:last-child { border-right: none; }
-.step-tab.active { background: var(--surface-2); color: var(--white); }
-.step-tab.done { color: var(--red-bright); }
+.step-tab.active { background: white; color: var(--black); box-shadow: inset 0 -2px 0 var(--red); }
+.step-tab.done { color: var(--red); }
 .step-num {
   width: 20px; height: 20px;
   border-radius: 50%;
-  background: var(--surface-3);
+  background: var(--surface-2);
   font-size: 11px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   color: var(--text-muted);
+  font-weight: 600;
 }
 .step-tab.active .step-num { background: var(--red); color: white; }
-.step-tab.done .step-num { background: var(--red-muted); color: white; }
+.step-tab.done .step-num { background: var(--red); color: white; }
 
 .step-panel { display: none; }
 .step-panel.active { display: block; animation: fadeUp 0.25s ease; }
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(10px); }
+  from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 /* PRODUCT GRID */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
   margin-bottom: 2rem;
 }
 .product-card {
-  background: var(--surface);
+  background: white;
   border: 1.5px solid var(--border);
-  border-radius: 12px;
-  padding: 1.5rem;
+  border-radius: 14px;
+  padding: 1.25rem;
   cursor: pointer;
   transition: all 0.2s;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
   position: relative;
 }
-.product-card:hover { border-color: #444; background: var(--surface-2); }
-.product-card.selected { border-color: var(--red); background: var(--surface-2); }
+.product-card:hover { border-color: var(--red); box-shadow: 0 0 0 3px rgba(165,28,48,0.08); }
+.product-card.selected { border-color: var(--red); box-shadow: 0 0 0 3px rgba(165,28,48,0.12); background: var(--red-light); }
 .product-check {
   display: none;
   position: absolute;
-  top: 12px; right: 12px;
+  top: 10px; right: 10px;
   width: 22px; height: 22px;
   border-radius: 50%;
   background: var(--red);
@@ -322,8 +355,18 @@ h2 {
   justify-content: center;
 }
 .product-card.selected .product-check { display: flex; }
-.product-name { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px; text-align: center; }
-.product-price { font-size: 13px; color: var(--text-muted); text-align: center; }
+.product-name { font-size: 14px; font-weight: 600; color: var(--black); text-align: center; }
+.product-price { font-size: 12px; color: var(--text-muted); text-align: center; }
+.product-tag {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--red);
+  background: var(--red-light);
+  padding: 2px 8px;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
 
 /* COLORS */
 .section-label {
@@ -336,37 +379,37 @@ h2 {
 }
 .color-swatches { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 2rem; }
 .swatch {
-  width: 38px; height: 38px;
+  width: 36px; height: 36px;
   border-radius: 50%;
   cursor: pointer;
   border: 2.5px solid transparent;
   transition: all 0.15s;
-  outline: 1px solid #333;
+  box-shadow: 0 0 0 1px var(--border);
 }
 .swatch:hover { transform: scale(1.1); }
-.swatch.active { border-color: var(--red); }
+.swatch.active { border-color: var(--red); box-shadow: 0 0 0 1px var(--red); }
 
 /* SIZES */
 .size-grid { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 2rem; }
 .size-btn {
   width: 54px; height: 40px;
-  border: 1px solid var(--border);
-  background: var(--surface);
+  border: 1.5px solid var(--border);
+  background: white;
   color: var(--text-muted);
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.15s;
   font-family: inherit;
 }
-.size-btn:hover { border-color: #555; color: var(--text); }
-.size-btn.active { border-color: var(--red); background: rgba(165,28,48,0.15); color: var(--white); }
+.size-btn:hover { border-color: var(--red); color: var(--red); }
+.size-btn.active { border-color: var(--red); background: var(--red-light); color: var(--red); font-weight: 600; }
 
 /* UPLOAD */
 .upload-zone {
   border: 2px dashed var(--border-strong);
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 4rem 2rem;
   text-align: center;
   cursor: pointer;
@@ -376,15 +419,15 @@ h2 {
 }
 .upload-zone:hover, .upload-zone.drag-over {
   border-color: var(--red);
-  background: rgba(165,28,48,0.04);
+  background: var(--red-light);
 }
 .upload-zone.has-file {
   border-style: solid;
-  border-color: #4ade80;
-  background: rgba(74,222,128,0.04);
+  border-color: #16a34a;
+  background: #f0fdf4;
 }
 .upload-icon { font-size: 44px; margin-bottom: 1rem; display: block; }
-.upload-title { font-size: 16px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+.upload-title { font-size: 16px; font-weight: 600; color: var(--black); margin-bottom: 6px; }
 .upload-sub { font-size: 13px; color: var(--text-muted); }
 .upload-tips {
   display: grid;
@@ -393,9 +436,9 @@ h2 {
   margin-top: 1.5rem;
 }
 .tip-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
   padding: 1rem;
   font-size: 12px;
   color: var(--text-muted);
@@ -413,8 +456,8 @@ h2 {
 }
 .mockup-container {
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
   padding: 2.5rem;
   display: flex;
   flex-direction: column;
@@ -422,15 +465,16 @@ h2 {
   gap: 1rem;
 }
 .order-summary {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
   padding: 1.5rem;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
 }
 .summary-title {
   font-size: 16px;
-  font-weight: 600;
-  color: var(--white);
+  font-weight: 700;
+  color: var(--black);
   margin-bottom: 1.25rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--border);
@@ -443,22 +487,22 @@ h2 {
   font-size: 14px;
 }
 .summary-label { color: var(--text-muted); }
-.summary-value { color: var(--text); font-weight: 500; }
+.summary-value { color: var(--black); font-weight: 500; }
 .summary-total {
-  border-top: 1px solid var(--border);
+  border-top: 1.5px solid var(--border);
   margin-top: 8px;
   padding-top: 14px;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 700;
-  color: var(--white);
+  color: var(--black);
 }
 .qty-control { display: flex; align-items: center; gap: 14px; }
 .qty-btn {
   width: 32px; height: 32px;
-  border: 1px solid var(--border);
-  background: var(--surface-2);
-  color: var(--text);
-  border-radius: 6px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--black);
+  border-radius: 8px;
   cursor: pointer;
   font-size: 18px;
   display: flex;
@@ -467,10 +511,10 @@ h2 {
   transition: border-color 0.1s;
   font-family: inherit;
 }
-.qty-btn:hover { border-color: #555; }
-.qty-display { font-size: 16px; font-weight: 600; min-width: 24px; text-align: center; color: var(--white); }
+.qty-btn:hover { border-color: var(--red); }
+.qty-display { font-size: 16px; font-weight: 700; min-width: 24px; text-align: center; color: var(--black); }
 
-/* NAV BTNS */
+/* STEP NAV */
 .step-nav-btns {
   display: flex;
   justify-content: space-between;
@@ -483,24 +527,38 @@ h2 {
 /* DASHBOARD */
 .dash-section {
   padding: 6rem 2.5rem;
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  background: var(--black);
+  color: white;
 }
 .dash-inner { max-width: 1000px; margin: 0 auto; }
+.dash-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red-bright);
+  margin-bottom: 0.75rem;
+}
+.dash-title {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: white;
+  margin-bottom: 2.5rem;
+}
 .db-bar { display: flex; gap: 4px; margin-bottom: 2rem; }
 .db-tab {
   padding: 7px 16px;
   font-size: 13px;
   border-radius: 6px;
   cursor: pointer;
-  color: var(--text-muted);
+  color: #888;
   background: transparent;
   border: none;
   transition: all 0.15s;
   font-family: inherit;
 }
-.db-tab.active { background: var(--surface-2); color: var(--white); }
+.db-tab.active { background: #1C1C1C; color: white; }
 .stats-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -508,18 +566,18 @@ h2 {
   margin-bottom: 1.5rem;
 }
 .stat-card {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 10px;
+  background: #1A1A1A;
+  border: 1px solid #2A2A2A;
+  border-radius: 12px;
   padding: 1.25rem;
 }
-.stat-label { font-size: 11px; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.07em; }
-.stat-value { font-size: 26px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+.stat-label { font-size: 11px; color: #666; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.07em; }
+.stat-value { font-size: 26px; font-weight: 700; color: white; margin-bottom: 4px; }
 .stat-delta { font-size: 12px; color: #4ade80; }
 .orders-table {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 10px;
+  background: #1A1A1A;
+  border: 1px solid #2A2A2A;
+  border-radius: 12px;
   overflow: hidden;
 }
 .t-head {
@@ -527,10 +585,10 @@ h2 {
   grid-template-columns: 2fr 1.2fr 0.6fr 0.8fr 1.2fr;
   padding: 12px 16px;
   font-size: 11px;
-  color: var(--text-muted);
+  color: #555;
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid #2A2A2A;
 }
 .t-row {
   display: grid;
@@ -538,13 +596,13 @@ h2 {
   padding: 14px 16px;
   font-size: 13px;
   align-items: center;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid #2A2A2A;
   transition: background 0.1s;
 }
 .t-row:last-child { border-bottom: none; }
-.t-row:hover { background: var(--surface-2); }
-.brand-name { font-weight: 500; color: var(--white); }
-.brand-meta { color: var(--text-muted); font-size: 12px; margin-top: 2px; }
+.t-row:hover { background: #222; }
+.brand-name { font-weight: 600; color: white; }
+.brand-meta { color: #555; font-size: 12px; margin-top: 2px; }
 .badge {
   display: inline-flex;
   align-items: center;
@@ -552,7 +610,7 @@ h2 {
   padding: 4px 10px;
   border-radius: 4px;
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 600;
 }
 .badge-prod { background: rgba(234,179,8,0.12); color: #fbbf24; }
 .badge-ship { background: rgba(74,222,128,0.12); color: #4ade80; }
@@ -568,11 +626,11 @@ h2 {
 .how-card {
   padding: 2rem;
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
 }
-.how-num { font-size: 52px; font-weight: 800; color: var(--red); opacity: 0.35; line-height: 1; margin-bottom: 1rem; }
-.how-title { font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+.how-num { font-size: 52px; font-weight: 800; color: var(--red); opacity: 0.25; line-height: 1; margin-bottom: 1rem; }
+.how-title { font-size: 16px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
 .how-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
 
 /* FOOTER */
@@ -582,18 +640,20 @@ footer {
   text-align: center;
   color: var(--text-muted);
   font-size: 13px;
+  background: var(--surface);
 }
 
 @media (max-width: 768px) {
   .hero { flex-direction: column; padding-top: 5rem; gap: 2rem; }
   .hero-visual { width: 100%; }
   .product-showcase { width: 100%; }
-  .product-grid { grid-template-columns: 1fr; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
   .review-grid { grid-template-columns: 1fr; }
   .stats-row { grid-template-columns: repeat(2, 1fr); }
   .how-grid { grid-template-columns: 1fr; }
   .nav-links li:not(:last-child) { display: none; }
   .upload-tips { grid-template-columns: 1fr; }
+  .trust-bar { gap: 1.5rem; flex-wrap: wrap; }
 }
 </style>
 </head>
@@ -601,7 +661,7 @@ footer {
 
 <nav>
   <a href="#" class="logo">
-    <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+    <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
       <circle cx="16" cy="16" r="15" stroke="#A51C30" stroke-width="1.5"/>
       <polygon points="16,8 24,22 8,22" fill="none" stroke="#A51C30" stroke-width="1.5" stroke-linejoin="round"/>
       <polygon points="16,13 20,20 12,20" fill="#A51C30"/>
@@ -610,9 +670,9 @@ footer {
   </a>
   <ul class="nav-links">
     <li><a href="#order">Order</a></li>
-    <li><a href="#dashboard">Print shops</a></li>
+    <li><a href="#dashboard">For Print Shops</a></li>
     <li><a href="#how">How it works</a></li>
-    <li><a href="#order" class="nav-cta" onclick="smoothTo('order')">Start order</a></li>
+    <li><a href="#order" class="nav-cta">Start order</a></li>
   </ul>
 </nav>
 
@@ -620,8 +680,8 @@ footer {
 <section class="hero" id="home">
   <div class="hero-text">
     <div class="hero-eyebrow">Custom Printing Platform</div>
-    <h1>Your designs.<br><span>Printed.</span><br>Nationwide.</h1>
-    <p class="hero-sub">Order premium custom apparel directly from the shop. Pick your blank, upload your artwork, and ship to your customers — all in one place.</p>
+    <h1>Bring your<br><span>vision</span><br>to life.</h1>
+    <p class="hero-sub">Order custom apparel, stickers, banners and more directly from the shop. Pick your product, upload your design, and ship anywhere — all in one place.</p>
     <div class="hero-actions">
       <button class="btn-primary" onclick="smoothTo('order')">
         Start your order
@@ -629,7 +689,7 @@ footer {
       </button>
       <button class="btn-ghost" onclick="smoothTo('dashboard')">
         For print shops
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="#888" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="#666" stroke-width="1.5" stroke-linecap="round"/></svg>
       </button>
     </div>
   </div>
@@ -641,18 +701,18 @@ footer {
           <div class="live-dot"></div>
           Live orders
         </div>
-        <svg width="220" height="240" viewBox="0 0 220 240" fill="none">
-          <path d="M75 65 L45 115 L65 120 L74 96 L74 215 L146 215 L146 96 L155 120 L175 115 L145 65 Q128 34 110 38 Q92 34 75 65Z" fill="#1C1C1C" stroke="#333" stroke-width="1.5"/>
-          <path d="M75 65 Q110 52 145 65" fill="#222" stroke="#A51C30" stroke-width="1.5"/>
-          <rect x="80" y="148" width="60" height="40" rx="4" fill="#222" stroke="#333" stroke-width="1"/>
-          <rect x="86" y="102" width="48" height="36" rx="4" fill="#A51C30" opacity="0.75"/>
-          <text x="110" y="124" text-anchor="middle" font-size="11" fill="white" font-family="Inter,sans-serif" font-weight="700">BRAND</text>
+        <svg width="210" height="230" viewBox="0 0 210 230" fill="none">
+          <path d="M72 62 L42 112 L62 118 L70 94 L70 210 L140 210 L140 94 L148 118 L168 112 L138 62 Q120 32 105 36 Q90 32 72 62Z" fill="#F0F0F0" stroke="#CCCCCC" stroke-width="1.5"/>
+          <path d="M72 62 Q105 50 138 62" fill="#E8E8E8" stroke="#A51C30" stroke-width="1.5"/>
+          <rect x="78" y="145" width="54" height="36" rx="4" fill="#E8E8E8" stroke="#CCCCCC" stroke-width="1"/>
+          <rect x="84" y="96" width="42" height="32" rx="4" fill="#A51C30" opacity="0.85"/>
+          <text x="105" y="116" text-anchor="middle" font-size="10" fill="white" font-family="Inter,sans-serif" font-weight="700">BRAND</text>
         </svg>
         <div class="order-pill">
-          <div style="width:8px;height:8px;border-radius:50%;background:#4ade80;flex-shrink:0;"></div>
+          <div style="width:8px;height:8px;border-radius:50%;background:#16a34a;flex-shrink:0;"></div>
           <div>
-            <div style="font-size:12px;font-weight:500;color:#F0F0F0;">Gio's Brand — 80 hoodies</div>
-            <div style="font-size:11px;color:#666;">In production · Est. 2 days</div>
+            <div style="font-size:12px;font-weight:600;color:#111;">Gio's Brand — 80 hoodies</div>
+            <div style="font-size:11px;color:#888;">In production · Est. 2 days</div>
           </div>
           <div style="margin-left:auto;font-size:13px;font-weight:700;color:#A51C30;">$2,560</div>
         </div>
@@ -661,16 +721,25 @@ footer {
   </div>
 </section>
 
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="trust-icon">🚀</span> Same-day samples available</div>
+  <div class="trust-item"><span class="trust-icon">🎨</span> DTG, DTF & UV printing</div>
+  <div class="trust-item"><span class="trust-icon">📦</span> Nationwide shipping</div>
+  <div class="trust-item"><span class="trust-icon">✅</span> Rush production available</div>
+</div>
+
 <!-- ORDER FLOW -->
 <section class="order-section" id="order">
   <div class="section-header">
     <div class="section-eyebrow">Place an order</div>
     <h2>Start your custom order</h2>
+    <p class="section-sub">Pick a product, choose your options, upload your design and you're done.</p>
   </div>
 
   <div class="steps-nav">
     <button class="step-tab active" id="tab-1" onclick="jumpTo(1)">
-      <span class="step-num">1</span> Choose blank
+      <span class="step-num">1</span> Choose product
     </button>
     <button class="step-tab" id="tab-2" onclick="jumpTo(2)">
       <span class="step-num">2</span> Color & size
@@ -685,48 +754,104 @@ footer {
 
   <!-- STEP 1 -->
   <div class="step-panel active" id="panel-1">
-    <div class="product-grid">
-      <div class="product-card" onclick="pickProduct('tee','Heavyweight Tee',18,this)">
-        <div class="product-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-        <svg width="120" height="128" viewBox="0 0 120 128" fill="none">
-          <path d="M35 28 L18 55 L34 59 L39 42 L39 118 L81 118 L81 42 L86 59 L102 55 L85 28 Q76 18 60 20 Q44 18 35 28Z" fill="#1C1C1C" stroke="#333" stroke-width="1.5" stroke-linejoin="round"/>
-          <path d="M44 28 Q60 36 76 28" fill="none" stroke="#444" stroke-width="1"/>
-          <rect x="49" y="54" width="22" height="16" rx="2" fill="#A51C30" opacity="0.6"/>
-        </svg>
-        <div><div class="product-name">Heavyweight Tee</div><div class="product-price">From $18 per unit</div></div>
-      </div>
+    <div style="margin-bottom:1rem;">
+      <div class="section-label">Apparel</div>
+      <div class="product-grid">
+        <div class="product-card" onclick="pickProduct('tee','Heavyweight Tee',18,this)">
+          <div class="product-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <svg width="100" height="108" viewBox="0 0 120 128" fill="none">
+            <path d="M35 28 L18 55 L34 59 L39 42 L39 118 L81 118 L81 42 L86 59 L102 55 L85 28 Q76 18 60 20 Q44 18 35 28Z" fill="#E8E8E8" stroke="#CCCCCC" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M44 28 Q60 36 76 28" fill="none" stroke="#AAAAAA" stroke-width="1"/>
+            <rect x="49" y="54" width="22" height="16" rx="2" fill="#A51C30" opacity="0.7"/>
+          </svg>
+          <div class="product-name">Heavyweight Tee</div>
+          <div class="product-price">From $18 per unit</div>
+        </div>
 
-      <div class="product-card" onclick="pickProduct('hoodie','Premium Hoodie',32,this)">
-        <div class="product-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-        <svg width="120" height="128" viewBox="0 0 120 128" fill="none">
-          <path d="M36 38 L14 76 L30 80 L38 58 L38 118 L82 118 L82 58 L90 80 L106 76 L84 38 Q74 16 60 20 Q46 16 36 38Z" fill="#1C1C1C" stroke="#333" stroke-width="1.5"/>
-          <path d="M36 38 Q60 28 84 38" fill="#222" stroke="#A51C30" stroke-width="1.5"/>
-          <rect x="44" y="86" width="32" height="20" rx="2" fill="#222" stroke="#333" stroke-width="1"/>
-          <rect x="48" y="58" width="24" height="18" rx="2" fill="#A51C30" opacity="0.6"/>
-        </svg>
-        <div><div class="product-name">Premium Hoodie</div><div class="product-price">From $32 per unit</div></div>
-      </div>
+        <div class="product-card" onclick="pickProduct('hoodie','Premium Hoodie',32,this)">
+          <div class="product-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <svg width="100" height="108" viewBox="0 0 120 128" fill="none">
+            <path d="M36 38 L14 76 L30 80 L38 58 L38 118 L82 118 L82 58 L90 80 L106 76 L84 38 Q74 16 60 20 Q46 16 36 38Z" fill="#E8E8E8" stroke="#CCCCCC" stroke-width="1.5"/>
+            <path d="M36 38 Q60 28 84 38" fill="#DDDDDD" stroke="#A51C30" stroke-width="1.5"/>
+            <rect x="44" y="86" width="32" height="20" rx="2" fill="#DDDDDD" stroke="#CCCCCC" stroke-width="1"/>
+            <rect x="48" y="58" width="24" height="18" rx="2" fill="#A51C30" opacity="0.7"/>
+          </svg>
+          <div class="product-name">Premium Hoodie</div>
+          <div class="product-price">From $32 per unit</div>
+        </div>
 
-      <div class="product-card" onclick="pickProduct('hat','Structured Hat',22,this)">
-        <div class="product-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-        <svg width="120" height="128" viewBox="0 0 120 128" fill="none">
-          <ellipse cx="60" cy="94" rx="44" ry="8" fill="#1C1C1C" stroke="#333" stroke-width="1.5"/>
-          <path d="M16 92 Q16 52 60 46 Q104 52 104 92" fill="#1C1C1C" stroke="#333" stroke-width="1.5"/>
-          <line x1="16" y1="82" x2="104" y2="82" stroke="#333" stroke-width="1"/>
-          <rect x="44" y="56" width="32" height="22" rx="3" fill="#A51C30" opacity="0.6"/>
-          <text x="60" y="71" text-anchor="middle" font-size="8" fill="white" font-family="Inter,sans-serif" font-weight="700">SE</text>
-        </svg>
-        <div><div class="product-name">Structured Hat</div><div class="product-price">From $22 per unit</div></div>
-      </div>
+        <div class="product-card" onclick="pickProduct('longsleeve','Long Sleeve',22,this)">
+          <div class="product-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <svg width="100" height="108" viewBox="0 0 120 128" fill="none">
+            <path d="M36 28 L6 90 L22 96 L38 54 L38 118 L82 118 L82 54 L98 96 L114 90 L84 28 Q74 18 60 20 Q46 18 36 28Z" fill="#E8E8E8" stroke="#CCCCCC" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M44 28 Q60 36 76 28" fill="none" stroke="#AAAAAA" stroke-width="1"/>
+            <rect x="49" y="54" width="22" height="16" rx="2" fill="#A51C30" opacity="0.7"/>
+          </svg>
+          <div class="product-name">Long Sleeve</div>
+          <div class="product-price">From $22 per unit</div>
+        </div>
 
-      <div class="product-card" onclick="pickProduct('longsleeve','Long Sleeve',22,this)">
-        <div class="product-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-        <svg width="120" height="128" viewBox="0 0 120 128" fill="none">
-          <path d="M36 28 L6 90 L22 96 L38 54 L38 118 L82 118 L82 54 L98 96 L114 90 L84 28 Q74 18 60 20 Q46 18 36 28Z" fill="#1C1C1C" stroke="#333" stroke-width="1.5" stroke-linejoin="round"/>
-          <path d="M44 28 Q60 36 76 28" fill="none" stroke="#444" stroke-width="1"/>
-          <rect x="49" y="54" width="22" height="16" rx="2" fill="#A51C30" opacity="0.6"/>
-        </svg>
-        <div><div class="product-name">Long Sleeve</div><div class="product-price">From $22 per unit</div></div>
+        <div class="product-card" onclick="pickProduct('hat','Structured Hat',22,this)">
+          <div class="product-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <svg width="100" height="108" viewBox="0 0 120 128" fill="none">
+            <ellipse cx="60" cy="94" rx="44" ry="8" fill="#E8E8E8" stroke="#CCCCCC" stroke-width="1.5"/>
+            <path d="M16 92 Q16 52 60 46 Q104 52 104 92" fill="#E8E8E8" stroke="#CCCCCC" stroke-width="1.5"/>
+            <line x1="16" y1="82" x2="104" y2="82" stroke="#CCCCCC" stroke-width="1"/>
+            <rect x="44" y="56" width="32" height="22" rx="3" fill="#A51C30" opacity="0.7"/>
+            <text x="60" y="71" text-anchor="middle" font-size="8" fill="white" font-family="Inter,sans-serif" font-weight="700">SE</text>
+          </svg>
+          <div class="product-name">Structured Hat</div>
+          <div class="product-price">From $22 per unit</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:1rem;">
+      <div class="section-label">Print Products</div>
+      <div class="product-grid">
+        <div class="product-card" onclick="pickProduct('sticker','Custom Stickers',8,this)">
+          <div class="product-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <div class="product-tag">Popular</div>
+          <svg width="100" height="108" viewBox="0 0 120 128" fill="none">
+            <rect x="20" y="24" width="80" height="80" rx="16" fill="#E8E8E8" stroke="#CCCCCC" stroke-width="1.5"/>
+            <rect x="32" y="36" width="56" height="56" rx="10" fill="#A51C30" opacity="0.15"/>
+            <circle cx="60" cy="64" r="22" fill="#A51C30" opacity="0.7"/>
+            <text x="60" y="69" text-anchor="middle" font-size="14" fill="white" font-family="Inter,sans-serif" font-weight="700">★</text>
+            <rect x="28" y="108" width="64" height="6" rx="3" fill="#CCCCCC"/>
+          </svg>
+          <div class="product-name">Custom Stickers</div>
+          <div class="product-price">From $8 per sheet</div>
+        </div>
+
+        <div class="product-card" onclick="pickProduct('dtf','DTF Rolls',15,this)">
+          <div class="product-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <svg width="100" height="108" viewBox="0 0 120 128" fill="none">
+            <ellipse cx="60" cy="30" rx="32" ry="14" fill="#E8E8E8" stroke="#CCCCCC" stroke-width="1.5"/>
+            <rect x="28" y="30" width="64" height="70" fill="#E8E8E8" stroke="#CCCCCC" stroke-width="1.5"/>
+            <ellipse cx="60" cy="100" rx="32" ry="14" fill="#DDDDDD" stroke="#CCCCCC" stroke-width="1.5"/>
+            <rect x="36" y="45" width="48" height="40" rx="4" fill="#A51C30" opacity="0.15"/>
+            <text x="60" y="70" text-anchor="middle" font-size="9" fill="#A51C30" font-family="Inter,sans-serif" font-weight="700">DTF</text>
+            <text x="60" y="82" text-anchor="middle" font-size="7" fill="#888" font-family="Inter,sans-serif">Direct to Film</text>
+          </svg>
+          <div class="product-name">DTF Rolls</div>
+          <div class="product-price">From $15 per transfer</div>
+        </div>
+
+        <div class="product-card" onclick="pickProduct('banner','Custom Banners',35,this)">
+          <div class="product-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <svg width="100" height="108" viewBox="0 0 120 128" fill="none">
+            <rect x="10" y="30" width="100" height="68" rx="6" fill="#E8E8E8" stroke="#CCCCCC" stroke-width="1.5"/>
+            <rect x="18" y="38" width="84" height="52" rx="4" fill="#A51C30" opacity="0.12"/>
+            <line x1="10" y1="20" x2="10" y2="110" stroke="#CCCCCC" stroke-width="2"/>
+            <line x1="110" y1="20" x2="110" y2="110" stroke="#CCCCCC" stroke-width="2"/>
+            <circle cx="10" cy="20" r="4" fill="#A51C30" opacity="0.6"/>
+            <circle cx="110" cy="20" r="4" fill="#A51C30" opacity="0.6"/>
+            <text x="60" y="64" text-anchor="middle" font-size="10" fill="#A51C30" font-family="Inter,sans-serif" font-weight="700">BANNER</text>
+            <text x="60" y="78" text-anchor="middle" font-size="7" fill="#888" font-family="Inter,sans-serif">Custom Sizes</text>
+          </svg>
+          <div class="product-name">Custom Banners</div>
+          <div class="product-price">From $35 per banner</div>
+        </div>
       </div>
     </div>
 
@@ -741,7 +866,7 @@ footer {
 
   <!-- STEP 2 -->
   <div class="step-panel" id="panel-2">
-    <div style="margin-bottom:2rem;">
+    <div style="margin-bottom:2rem;" id="color-section">
       <div class="section-label">Select color</div>
       <div class="color-swatches">
         <div class="swatch active" style="background:#FFFFFF;" onclick="pickColor(this,'White')" title="White"></div>
@@ -749,12 +874,14 @@ footer {
         <div class="swatch" style="background:#6B7280;" onclick="pickColor(this,'Grey')" title="Grey"></div>
         <div class="swatch" style="background:#7C2D12;" onclick="pickColor(this,'Maroon')" title="Maroon"></div>
         <div class="swatch" style="background:#1D4ED8;" onclick="pickColor(this,'Navy')" title="Navy"></div>
-        <div class="swatch" style="background:#064E3B;" onclick="pickColor(this,'Forest')" title="Forest Green"></div>
-        <div class="swatch" style="background:#F5F0E8;" onclick="pickColor(this,'Cream')" title="Cream"></div>
+        <div class="swatch" style="background:#064E3B;" onclick="pickColor(this,'Forest Green')" title="Forest Green"></div>
+        <div class="swatch" style="background:#F5F0E8;box-shadow:0 0 0 1px #ccc;" onclick="pickColor(this,'Cream')" title="Cream"></div>
         <div class="swatch" style="background:#B91C1C;" onclick="pickColor(this,'Red')" title="Red"></div>
+        <div class="swatch" style="background:#FDE68A;box-shadow:0 0 0 1px #ccc;" onclick="pickColor(this,'Yellow')" title="Yellow"></div>
+        <div class="swatch" style="background:#EC4899;" onclick="pickColor(this,'Pink')" title="Pink"></div>
       </div>
     </div>
-    <div>
+    <div id="size-section">
       <div class="section-label">Select size</div>
       <div class="size-grid">
         <button class="size-btn" onclick="pickSize(this)">XS</button>
@@ -784,8 +911,8 @@ footer {
         <div class="upload-sub">PNG, SVG, or PSD · 300 DPI recommended · Transparent background preferred</div>
       </div>
       <div id="u-done" style="display:none;">
-        <span class="upload-icon" style="color:#4ade80;">✓</span>
-        <div class="upload-title" style="color:#4ade80;">brand_logo_v3.png uploaded</div>
+        <span class="upload-icon" style="color:#16a34a;">✓</span>
+        <div class="upload-title" style="color:#16a34a;">brand_logo_v3.png uploaded</div>
         <div class="upload-sub">4200 × 4200 px · 300 DPI · Transparent background detected</div>
       </div>
     </div>
@@ -809,16 +936,15 @@ footer {
       <div>
         <div class="mockup-container">
           <svg id="review-svg" width="200" height="220" viewBox="0 0 200 220" fill="none">
-            <path d="M65 58 L38 108 L58 114 L66 90 L66 208 L134 208 L134 90 L142 114 L162 108 L135 58 Q118 28 100 32 Q82 28 65 58Z" fill="#1C1C1C" stroke="#333" stroke-width="1.5"/>
-            <path d="M65 58 Q100 46 135 58" fill="#222" stroke="#A51C30" stroke-width="1.5"/>
-            <rect x="72" y="138" width="56" height="38" rx="4" fill="#222" stroke="#333" stroke-width="1"/>
+            <path d="M65 58 L38 108 L58 114 L66 90 L66 208 L134 208 L134 90 L142 114 L162 108 L135 58 Q118 28 100 32 Q82 28 65 58Z" fill="#EEEEEE" stroke="#CCCCCC" stroke-width="1.5"/>
+            <path d="M65 58 Q100 46 135 58" fill="#E0E0E0" stroke="#A51C30" stroke-width="1.5"/>
+            <rect x="72" y="138" width="56" height="38" rx="4" fill="#E0E0E0" stroke="#CCCCCC" stroke-width="1"/>
             <rect x="77" y="92" width="46" height="34" rx="4" fill="#A51C30" opacity="0.75"/>
-            <text x="100" y="113" text-anchor="middle" font-size="10" fill="white" font-family="Inter,sans-serif" font-weight="700">YOUR DESIGN</text>
+            <text x="100" y="113" text-anchor="middle" font-size="9" fill="white" font-family="Inter,sans-serif" font-weight="700">YOUR DESIGN</text>
           </svg>
-          <div style="font-size:12px;color:#555;text-align:center;">Placement preview — not to scale</div>
+          <div style="font-size:12px;color:#888;text-align:center;">Placement preview — not to scale</div>
         </div>
       </div>
-
       <div>
         <div class="order-summary">
           <div class="summary-title">Order summary</div>
@@ -836,7 +962,7 @@ footer {
           </div>
           <div class="summary-row">
             <span class="summary-label">Design file</span>
-            <span class="summary-value" id="r-file" style="color:#4ade80;">brand_logo_v3.png</span>
+            <span class="summary-value" id="r-file" style="color:#16a34a;">brand_logo_v3.png</span>
           </div>
           <div class="summary-row">
             <span class="summary-label">Quantity</span>
@@ -854,10 +980,9 @@ footer {
         <button class="btn-primary" id="place-btn" style="width:100%;margin-top:14px;justify-content:center;padding:16px 28px;" onclick="placeOrder()">
           Place order
         </button>
-        <p style="font-size:12px;color:#555;text-align:center;margin-top:10px;">Production starts within 24 hours · Tracking included</p>
+        <p style="font-size:12px;color:#888;text-align:center;margin-top:10px;">Production starts within 24 hours · Tracking included</p>
       </div>
     </div>
-
     <div class="step-nav-btns">
       <button class="btn-ghost" onclick="goPrev(3)">← Back</button>
       <div></div>
@@ -869,17 +994,15 @@ footer {
 <section class="dash-section" id="dashboard">
   <div class="dash-inner">
     <div style="margin-bottom:2.5rem;">
-      <div class="section-eyebrow">Print shop dashboard</div>
-      <h2 style="margin-top:8px;">Your shop. Fully automated.</h2>
+      <div class="dash-eyebrow">Print shop dashboard</div>
+      <div class="dash-title">Your shop. Fully automated.</div>
     </div>
-
     <div class="db-bar">
       <button class="db-tab active">Overview</button>
       <button class="db-tab">Orders</button>
       <button class="db-tab">Brands</button>
       <button class="db-tab">Production</button>
     </div>
-
     <div class="stats-row">
       <div class="stat-card">
         <div class="stat-label">Revenue today</div>
@@ -902,7 +1025,6 @@ footer {
         <div class="stat-delta">↑ 3 this week</div>
       </div>
     </div>
-
     <div class="orders-table">
       <div class="t-head">
         <div>Brand / Order</div>
@@ -913,30 +1035,30 @@ footer {
       </div>
       <div class="t-row">
         <div><div class="brand-name">Gio's Brand</div><div class="brand-meta">Order #1042 · 2 hours ago</div></div>
-        <div style="color:#888;font-size:13px;">Premium Hoodies</div>
-        <div style="color:#888;font-size:13px;">80</div>
-        <div style="font-weight:600;color:#F0F0F0;">$2,560</div>
+        <div style="color:#666;font-size:13px;">Premium Hoodies</div>
+        <div style="color:#666;font-size:13px;">80</div>
+        <div style="font-weight:600;color:white;">$2,560</div>
         <div><span class="badge badge-prod">● In production</span></div>
       </div>
       <div class="t-row">
         <div><div class="brand-name">Streetwear Co</div><div class="brand-meta">Order #1041 · 5 hours ago</div></div>
-        <div style="color:#888;font-size:13px;">Heavyweight Tees</div>
-        <div style="color:#888;font-size:13px;">120</div>
-        <div style="font-weight:600;color:#F0F0F0;">$2,160</div>
+        <div style="color:#666;font-size:13px;">Custom Stickers</div>
+        <div style="color:#666;font-size:13px;">500</div>
+        <div style="font-weight:600;color:white;">$400</div>
         <div><span class="badge badge-ship">● Shipped</span></div>
       </div>
       <div class="t-row">
         <div><div class="brand-name">La Familia Apparel</div><div class="brand-meta">Order #1040 · Yesterday</div></div>
-        <div style="color:#888;font-size:13px;">Structured Hats</div>
-        <div style="color:#888;font-size:13px;">50</div>
-        <div style="font-weight:600;color:#F0F0F0;">$1,100</div>
+        <div style="color:#666;font-size:13px;">DTF Rolls</div>
+        <div style="color:#666;font-size:13px;">50</div>
+        <div style="font-weight:600;color:white;">$750</div>
         <div><span class="badge badge-ship">● Shipped</span></div>
       </div>
       <div class="t-row">
         <div><div class="brand-name">Eastside Collective</div><div class="brand-meta">Order #1039 · Yesterday</div></div>
-        <div style="color:#888;font-size:13px;">Long Sleeves</div>
-        <div style="color:#888;font-size:13px;">60</div>
-        <div style="font-weight:600;color:#F0F0F0;">$1,320</div>
+        <div style="color:#666;font-size:13px;">Event Banners</div>
+        <div style="color:#666;font-size:13px;">10</div>
+        <div style="font-weight:600;color:white;">$350</div>
         <div><span class="badge badge-pend">● Pending</span></div>
       </div>
     </div>
@@ -947,13 +1069,14 @@ footer {
 <section class="how-section" id="how">
   <div class="section-header">
     <div class="section-eyebrow">How it works</div>
-    <h2>From artwork to doorstep</h2>
+    <h2>From idea to doorstep</h2>
+    <p class="section-sub">Three simple steps. No design experience needed.</p>
   </div>
   <div class="how-grid">
     <div class="how-card">
       <div class="how-num">01</div>
-      <div class="how-title">Choose your blank</div>
-      <div class="how-desc">Pick from premium tees, hoodies, hats, and long sleeves. DTG and DTF printing available on all blanks.</div>
+      <div class="how-title">Choose your product</div>
+      <div class="how-desc">Pick from tees, hoodies, hats, long sleeves, stickers, DTF rolls, and custom banners. More products added weekly.</div>
     </div>
     <div class="how-card">
       <div class="how-num">02</div>
@@ -962,8 +1085,8 @@ footer {
     </div>
     <div class="how-card">
       <div class="how-num">03</div>
-      <div class="how-title">Printed and shipped</div>
-      <div class="how-desc">Same-day samples available. Rush production for tight deadlines. Track every unit in real time.</div>
+      <div class="how-title">We print and ship</div>
+      <div class="how-desc">Same-day samples available. Rush production for tight deadlines. Track every order in real time.</div>
     </div>
   </div>
 </section>
@@ -975,27 +1098,19 @@ footer {
       <polygon points="16,8 24,22 8,22" fill="none" stroke="#A51C30" stroke-width="1.5" stroke-linejoin="round"/>
       <polygon points="16,13 20,20 12,20" fill="#A51C30"/>
     </svg>
-    <span style="font-weight:600;font-size:15px;color:#F0F0F0;">SnapExpress</span>
+    <span style="font-weight:700;font-size:15px;color:#111;">SnapExpress</span>
   </div>
-  <div>Custom Printing Platform · Nationwide Shipping · DTG & DTF Printing</div>
-  <div style="margin-top:6px;color:#444;font-size:12px;">Platform preview — powered by SnapExpress</div>
+  <div style="color:#888;">Custom Printing Platform · Nationwide Shipping · DTG, DTF & UV Printing</div>
+  <div style="margin-top:6px;color:#ccc;font-size:12px;">Platform preview</div>
 </footer>
 
 <script>
 let state = {
-  step: 1,
-  product: null,
-  productName: 'Premium Hoodie',
-  price: 32,
-  color: 'White',
-  size: 'M',
-  qty: 12,
-  uploaded: false
+  step: 1, product: null, productName: 'Premium Hoodie',
+  price: 32, color: 'White', size: 'M', qty: 12, uploaded: false
 };
 
-function smoothTo(id) {
-  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-}
+function smoothTo(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
 
 function setStep(n) {
   document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
@@ -1003,79 +1118,60 @@ function setStep(n) {
   document.getElementById('panel-' + n).classList.add('active');
   document.getElementById('tab-' + n).classList.add('active');
   for (let i = 1; i < n; i++) {
-    document.getElementById('tab-' + i).classList.add('done');
-    var el = document.getElementById('tab-' + i);
-    var num = el.querySelector('.step-num');
+    var tab = document.getElementById('tab-' + i);
+    tab.classList.add('done');
+    var num = tab.querySelector('.step-num');
     if (num) num.textContent = '✓';
   }
   state.step = n;
   if (n === 4) refreshReview();
+  // Hide size section for non-apparel products
+  var sizeSection = document.getElementById('size-section');
+  if (sizeSection) {
+    var noSize = ['sticker','dtf','banner'];
+    sizeSection.style.display = (state.product && noSize.includes(state.product)) ? 'none' : 'block';
+  }
 }
 
-function jumpTo(n) {
-  if (n <= state.step) setStep(n);
-}
-
-function goNext(n) {
-  setStep(n);
-  document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
-}
-
-function goPrev(n) {
-  setStep(n);
-  document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
-}
+function jumpTo(n) { if (n <= state.step) setStep(n); }
+function goNext(n) { setStep(n); document.getElementById('order').scrollIntoView({ behavior: 'smooth' }); }
+function goPrev(n) { setStep(n); document.getElementById('order').scrollIntoView({ behavior: 'smooth' }); }
 
 function pickProduct(type, name, price, el) {
   document.querySelectorAll('.product-card').forEach(c => c.classList.remove('selected'));
   el.classList.add('selected');
-  state.product = type;
-  state.productName = name;
-  state.price = price;
+  state.product = type; state.productName = name; state.price = price;
   var btn = document.getElementById('btn-next-1');
-  btn.disabled = false;
-  btn.style.opacity = '1';
-  btn.style.cursor = 'pointer';
+  btn.disabled = false; btn.style.opacity = '1'; btn.style.cursor = 'pointer';
 }
 
 function pickColor(el, name) {
   document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
-  el.classList.add('active');
-  state.color = name;
+  el.classList.add('active'); state.color = name;
 }
 
 function pickSize(el) {
   document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
-  el.classList.add('active');
-  state.size = el.textContent;
+  el.classList.add('active'); state.size = el.textContent;
 }
 
 function fakeUpload() {
-  var zone = document.getElementById('uZone');
-  zone.classList.add('has-file');
+  document.getElementById('uZone').classList.add('has-file');
   document.getElementById('u-idle').style.display = 'none';
   document.getElementById('u-done').style.display = 'block';
   state.uploaded = true;
 }
 
-function onDragOver(e) {
-  e.preventDefault();
-  document.getElementById('uZone').classList.add('drag-over');
-}
-function onDragLeave() {
-  document.getElementById('uZone').classList.remove('drag-over');
-}
-function onDrop(e) {
-  e.preventDefault();
-  fakeUpload();
-}
+function onDragOver(e) { e.preventDefault(); document.getElementById('uZone').classList.add('drag-over'); }
+function onDragLeave() { document.getElementById('uZone').classList.remove('drag-over'); }
+function onDrop(e) { e.preventDefault(); fakeUpload(); }
 
 function refreshReview() {
   document.getElementById('r-product').textContent = state.productName;
   document.getElementById('r-color').textContent = state.color;
-  document.getElementById('r-size').textContent = state.size;
+  document.getElementById('r-size').textContent = ['sticker','dtf','banner'].includes(state.product) ? 'Custom' : state.size;
   document.getElementById('r-file').textContent = state.uploaded ? 'brand_logo_v3.png' : 'No file selected';
-  document.getElementById('r-file').style.color = state.uploaded ? '#4ade80' : '#888';
+  document.getElementById('r-file').style.color = state.uploaded ? '#16a34a' : '#888';
   calcTotal();
 }
 
@@ -1092,9 +1188,7 @@ function calcTotal() {
 function placeOrder() {
   var btn = document.getElementById('place-btn');
   btn.innerHTML = '✓ Order placed — check your email';
-  btn.style.background = '#064e3b';
-  btn.style.cursor = 'default';
-  btn.onclick = null;
+  btn.style.background = '#15803d'; btn.style.cursor = 'default'; btn.onclick = null;
 }
 
 document.querySelectorAll('.db-tab').forEach(function(t) {
